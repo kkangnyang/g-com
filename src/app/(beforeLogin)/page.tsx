@@ -1,11 +1,11 @@
 import Image from "next/image";
-import styles from "./page.module.css"; // css module
+import styles from "../page.module.css"; // css module
 import Link from "next/link";
-import glogo from "../../public/glogo.png"
+import glogo from "../../../public/glogo.png"
 
-export default function Home() {
+export default function Main() {
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.left}>
         <Image src={glogo} alt="logo" />
       </div>
