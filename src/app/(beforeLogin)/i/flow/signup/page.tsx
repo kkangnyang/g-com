@@ -1,9 +1,5 @@
-import Image from "next/image";
+import SignUpModal from "@/app/(beforeLogin)/_component/SignUpModal";
 
 export default function SignUp() {
-  return (
-    <div>
-      회원가입 모달
-    </div>
-  );
+  return <SignUpModal />
 }
