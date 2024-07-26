@@ -1,8 +1,8 @@
-import { log } from 'console';
 import { http, HttpResponse } from 'msw';
 
 export const handlers = [
     http.post('/api/login', () => {
+        console.log('로그인');
         return HttpResponse.json({
             userId: 1,
             nickname: '가영',
