@@ -7,34 +7,27 @@ import ActionButtons from './ActionButtons';
 import PostArticle from './PostArticle';
 import { faker } from '@faker-js/faker';
 import PostImages from './PostImages';
+import { Post as IPost } from '@/model/Post';
 
 dayjs.locale('ko')
 dayjs.extend(relativeTime)
 
 type Props = {
-    noImage?: boolean
+    noImage?: boolean,
+    post: IPost,
 }
-export default function Post({noImage}: Props) {
-    const target = {
-        postId: 1,
-        content: '리액트 공부중',
-        User: {
-            id: 'gayoung',
-            nickname: '가영',
-            image: '/yRsRRjGO.jpg'
-        },
-        createdAt: new Date(),
-        Images: [] as any[],
-    }
+export default function Post({noImage, post}: Props) {
+    const target = post
+    console.log('post :::', target)
 
-    if (Math.random() > 0.5) {
-        target.Images.push(
-            {imageId: 1, link: faker.image.urlLoremFlickr()},
-            {imageId: 2, link: faker.image.urlLoremFlickr()},
-            {imageId: 3, link: faker.image.urlLoremFlickr()},
-            {imageId: 4, link: faker.image.urlLoremFlickr()},
-        )
-    }
+    // if (Math.random() > 0.5 && !noImage) {
+    //     target.Images.push(
+    //         {imageId: 1, link: faker.image.urlLoremFlickr()},
+    //         {imageId: 2, link: faker.image.urlLoremFlickr()},
+    //         {imageId: 3, link: faker.image.urlLoremFlickr()},
+    //         {imageId: 4, link: faker.image.urlLoremFlickr()},
+    //     )
+    // }
 
     return (
         <PostArticle post={target}>
