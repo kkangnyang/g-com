@@ -13,10 +13,10 @@ function RQProvider({children}: Props) {
     new QueryClient({
       defaultOptions: {  // react-query 전역 설정
         queries: {
-          refetchOnWindowFocus: false,
-          retryOnMount: true,
-          refetchOnReconnect: false,
-          retry: false,
+          refetchOnWindowFocus: false, // focus가 바뀌엇을때 (tab 이동)
+          retryOnMount: true, // 컴포넌트가 unmount 되었다 mount 되었을 경우
+          refetchOnReconnect: false, // 인터넷 연결이 끊겻다가 다시 붙을 경우
+          retry: false, // 재시도
         },
       },
     })

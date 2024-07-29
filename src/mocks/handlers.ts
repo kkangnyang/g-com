@@ -110,4 +110,63 @@ export const handlers = [
             ]
         )
     }),
+    http.get('/api/followingPosts', async ({ request }) => {
+        console.log('추천게시글');
+        // await delay(3000);
+        // console.log('딜레이 종료');
+        // const url = new URL(request.url)
+        // const cursor = parseInt(url.searchParams.get('cursor') as string) || 0
+        const cursor = 0;
+        return HttpResponse.json(
+            [
+                {
+                    postId: cursor + 1,
+                    User: User[0],
+                    content: `${cursor + 1} G.com is so marvelous. I'm gonna buy that.`,
+                    Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+                    createdAt: generateDate(),
+                },
+                {
+                    postId: cursor + 2,
+                    User: User[0],
+                    content: `${cursor + 2} G.com is so marvelous. I'm gonna buy that.`,
+                    Images: [
+                        { imageId: 1, link: faker.image.urlLoremFlickr() },
+                        { imageId: 2, link: faker.image.urlLoremFlickr() },
+                    ],
+                    createdAt: generateDate(),
+                },
+                {
+                    postId: cursor + 3,
+                    User: User[0],
+                    content: `${cursor + 3} G.com is so marvelous. I'm gonna buy that.`,
+                    Images: [],
+                    createdAt: generateDate(),
+                },
+                {
+                    postId: cursor + 4,
+                    User: User[0],
+                    content: `${cursor + 4} G.com is so marvelous. I'm gonna buy that.`,
+                    Images: [
+                        { imageId: 1, link: faker.image.urlLoremFlickr() },
+                        { imageId: 2, link: faker.image.urlLoremFlickr() },
+                        { imageId: 3, link: faker.image.urlLoremFlickr() },
+                        { imageId: 4, link: faker.image.urlLoremFlickr() },
+                    ],
+                    createdAt: generateDate(),
+                },
+                {
+                    postId: cursor + 5,
+                    User: User[0],
+                    content: `${cursor + 5} G.com is so marvelous. I'm gonna buy that.`,
+                    Images: [
+                        { imageId: 1, link: faker.image.urlLoremFlickr() },
+                        { imageId: 2, link: faker.image.urlLoremFlickr() },
+                        { imageId: 3, link: faker.image.urlLoremFlickr() },
+                    ],
+                    createdAt: generateDate(),
+                },
+            ]
+        )
+    }),
 ]
