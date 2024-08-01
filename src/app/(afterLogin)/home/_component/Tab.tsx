@@ -10,6 +10,7 @@ export default function Tab() {
         setTab("rec")
     }
     const onClickFol = () => {
+        console.log('on click fol')
         setTab("fol")
     }
 

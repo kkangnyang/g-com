@@ -3,6 +3,7 @@ import BackButton from "../_component/BackButton";
 import Post from "../_component/Post";
 import SearchForm from "../_component/SearchForm";
 import Tab from './_component/Tab';
+import SearchResult from './_component/SearchResult';
 
 type Props = {
   searchParams: { q: string, f?: string, pf?: string }
@@ -22,6 +23,7 @@ export default function Search({ searchParams }: Props) {
         <Tab />
       </div>
       <div className={style.list}>
+        {/* <Post />
         <Post />
         <Post />
         <Post />
@@ -31,9 +33,8 @@ export default function Search({ searchParams }: Props) {
         <Post />
         <Post />
         <Post />
-        <Post />
-        <Post />
-        {/*<SearchResult searchParams={searchParams} />*/}
+        <Post /> */}
+        <SearchResult searchParams={searchParams} />
       </div>
     </main>
   );

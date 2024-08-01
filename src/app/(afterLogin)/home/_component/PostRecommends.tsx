@@ -13,15 +13,8 @@ export default function PostRecommends() {
         gcTime: 300 * 1000,
         initialData: () => [], // 초기Data => Reset을 하면 초기Data로 가져온다
     })
-    return (
-        <>
-            {   
-                data?.map((post) => {
-                    return <Post key={post.postId} post={post} />
-                })
-            }
-        </>
-
-    )
+    return data?.map((post) => {
+        return <Post key={post.postId} post={post} />
+    })
 
 }

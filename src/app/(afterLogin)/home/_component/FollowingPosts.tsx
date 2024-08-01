@@ -14,16 +14,10 @@ export default function FollowingPosts() {
         initialData: () => [], // 초기Data => Reset을 하면 초기Data로 가져온다
     })
 
-    console.log('data :::', data)
-    return (
-        <>
-            {   
-                data?.map((post) => {
-                    return <Post key={post.postId} post={post} />
-                })
-            }
-        </>
+    console.log('FollowingPosts call')
 
-    )
+    return data?.map((post) => {
+        return <Post key={post.postId} post={post} />
+    })
 
 }
