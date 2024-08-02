@@ -152,7 +152,49 @@ export const handlers = [
             ]
         )
     }),
-    http.get('/api/user/:userId/posts', async ({ request, params }) => {
+    http.get('/api/search/:tag', ({ request, params }) => {
+        const { tag } = params;
+        return HttpResponse.json(
+          [
+            {
+              postId: 1,
+              User: User[0],
+              content: `${1} 검색결과 ${tag}`,
+              Images: [{imageId: 1, link: faker.image.urlLoremFlickr()}],
+              createdAt: generateDate(),
+            },
+            {
+              postId: 2,
+              User: User[0],
+              content: `${2} 검색결과 ${tag}`,
+              Images: [{imageId: 1, link: faker.image.urlLoremFlickr()}],
+              createdAt: generateDate(),
+            },
+            {
+              postId: 3,
+              User: User[0],
+              content: `${3} 검색결과 ${tag}`,
+              Images: [{imageId: 1, link: faker.image.urlLoremFlickr()}],
+              createdAt: generateDate(),
+            },
+            {
+              postId: 4,
+              User: User[0],
+              content: `${4} 검색결과 ${tag}`,
+              Images: [{imageId: 1, link: faker.image.urlLoremFlickr()}],
+              createdAt: generateDate(),
+            },
+            {
+              postId: 5,
+              User: User[0],
+              content: `${5} 검색결과 ${tag}`,
+              Images: [{imageId: 1, link: faker.image.urlLoremFlickr()}],
+              createdAt: generateDate(),
+            },
+          ]
+        )
+      }),
+    http.get('/api/users/:userId/posts', async ({ request, params }) => {
         console.log('검색');
         const { userId } = params;
         return HttpResponse.json(
@@ -195,13 +237,19 @@ export const handlers = [
             ]
         )
     }),
-    http.get('/api/user/:userId', ({ request, params }) => {
+    http.get('/api/users/:userId', ({ request, params }) => {
         const { userId } = params;
-        return HttpResponse.json({
-            
+        const found = User.find((v) => v.id === userId )
+        if (found) {
+            return HttpResponse.json(
+                found,
+            )
+        }
+        return HttpResponse.json({ message: 'no_such_user' }, {
+            status: 404,
         })
     }),
-    http.get('/api/user/:userId/posts/:postId', ({ request, params }) => {
+    http.get('/api/users/:userId/posts/:postId', ({ request, params }) => {
         const { userId, postId } = params;
         return HttpResponse.json({
             postId: 6,
@@ -211,7 +259,7 @@ export const handlers = [
             createdAt: generateDate(),
         })
     }),
-    http.get('/api/user/:userId/posts/:postId/comments', ({ request, params }) => {
+    http.get('/api/users/:userId/posts/:postId/comments', ({ request, params }) => {
         console.log('검색');
         const { userId, postId } = params;
         return HttpResponse.json(
@@ -219,7 +267,7 @@ export const handlers = [
                 {
                     postId: 1,
                     User: User[0],
-                    content: `${1} ${userId}의 게시글의 ${postId}의 답글 메롱`,
+                    content: `${1} ${userId}의 게시글의 ${postId}의 답글`,
                     Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
                     createdAt: generateDate(),
                 },
@@ -259,16 +307,16 @@ export const handlers = [
     }),
     http.get('/api/trends', (request) => {
         return HttpResponse.json([
-            { tagId: 1, title: '가영', count: 133 },
-            { tagId: 2, title: '나영', count: 133 },
-            { tagId: 3, title: '다영', count: 133 },
-            { tagId: 4, title: '라영', count: 133 },
-            { tagId: 5, title: '마영', count: 133 },
-            { tagId: 6, title: '바영', count: 133 },
-            { tagId: 7, title: '사영', count: 133 },
-            { tagId: 8, title: '아영', count: 133 },
-            { tagId: 9, title: '자영', count: 133 },
-            { tagId: 10, title: '차영', count: 133 },
+            { tagId: 1, title: '가영', count: 1333 },
+            { tagId: 2, title: '나영', count: 1332 },
+            { tagId: 3, title: '다영', count: 1333 },
+            { tagId: 4, title: '라영', count: 1343 },
+            { tagId: 5, title: '마영', count: 1323 },
+            { tagId: 6, title: '바영', count: 1333 },
+            { tagId: 7, title: '사영', count: 1433 },
+            { tagId: 8, title: '아영', count: 1333 },
+            { tagId: 9, title: '자영', count: 1333 },
+            { tagId: 10, title: '차영', count: 1133 },
         ]);
     }),
 ]
