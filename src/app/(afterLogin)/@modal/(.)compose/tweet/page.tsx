@@ -1,19 +1,22 @@
 "use client";
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import style from './modal.module.css';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function TweetModal() {
-    const content = '';
-    const me = {
-        id: 'gayoung',
-        image: '/glogo.png'
-    }
-
+    const [content] = useState();
+    const { data: me } = useSession();
     const imageRef = useRef<HTMLInputElement>(null);
-    
+    const router = useRouter();
+
     const onChangeContent = () => {}
-    const onClickButton = () => {}
-    const onClickClose = () => {}
+    const onClickButton = () => {
+
+    }
+    const onClickClose = () => {
+        router.back();
+    }
     const onSubmit = () => {}
     
     return (
@@ -32,7 +35,7 @@ export default function TweetModal() {
                     <div className={style.modalBody}>
                         <div className={style.postUserSection}>
                             <div className={style.postUserImage}>
-                                <img src={me.image} alt={me.id} />
+                                <img src={me?.user?.image as string} alt={me?.user?.email as string} />
                             </div>
                         </div>
                         <div className={style.inputDiv}>

@@ -17,7 +17,7 @@ export default function UserInfo({ username }: Props) {
         gcTime: 300 * 1000,
     })
 
-    console.log('error :::', error)
+    console.dir('error :::', error)
 
     if (error) {
         return (
@@ -28,21 +28,20 @@ export default function UserInfo({ username }: Props) {
                 </div>
                 <div className={style.userZone}>
                     <div className={style.userImage}>
-                        <img src={undefined} alt={username} />
                     </div>
                     <div className={style.userName}>
                         <div>@{username}</div>
                     </div>
-                    <div style={{
-                        height: 100, 
-                        alignItems: 'center', 
-                        fontSize: 31, 
-                        fontWeight: 'bold', 
-                        justifyContent: 'center', 
-                        display: 'flex'
-                    }}>
-                        계정이 존재하지 않음
-                    </div>
+                </div>
+                <div style={{
+                    height: 100,
+                    alignItems: 'center',
+                    fontSize: 31,
+                    fontWeight: 'bold',
+                    justifyContent: 'center',
+                    display: 'flex'
+                }}>
+                    계정이 존재하지 않음
                 </div>
             </>
         )
