@@ -106,6 +106,7 @@ export const handlers = [
     }),
     http.get('/api/followingPosts', async ({ request }) => {
         console.log('팔로우글');
+        await delay(3000);
         return HttpResponse.json(
             [
                 {
