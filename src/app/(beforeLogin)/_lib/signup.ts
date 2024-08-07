@@ -16,13 +16,15 @@ export default async (prevState: any, formData: FormData) => {
       if (!formData.get('image')) {
         return { message: 'no_image' }
       }
+
+      formData.set('nickname', formData.get('name') as string);
   
       let shouldRedirect = false;
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`, {
           method: 'post',
           body: formData,
-          credentials: 'include',
+          credentials: 'include', // 쿠키 전달
         })
         console.log(response.status);
         if (response.status === 403) {
@@ -35,10 +37,11 @@ export default async (prevState: any, formData: FormData) => {
           password: formData.get('password'),
           redirect: false,
         })
+        
       } catch (err) {
         console.error(err);
       }
-  
+
       if (shouldRedirect) {
         redirect('/home')
       }
