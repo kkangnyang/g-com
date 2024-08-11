@@ -1,5 +1,7 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
+import cookie from 'cookie';
+import { cookies } from "next/headers";
 
 export const {
   handlers: { GET, POST },
@@ -23,6 +25,11 @@ export const {
             password: credentials.password,
           }),
         })
+        let setCookie = authResponse.headers.get('Set-Cookie');
+        if (setCookie) {
+          const parsed = cookie.parse(setCookie);
+          cookies().set('connect.sid', parsed['connect.sid'], parsed); // 브라우저에 쿠키를 심어주는 것
+        }
 
         if (!authResponse.ok) {
           return null
